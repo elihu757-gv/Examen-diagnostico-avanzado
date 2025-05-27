@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Examen Diagnóstico de Inglés</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(to right, #e0f7fa, #fce4ec);
+      padding: 20px;
+    }
+    h1 {
+      color: #2c3e50;
+      text-align: center;
+    }
+    .question {
+      margin-bottom: 20px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+    }
+    .question h3 {
+      color: #34495e;
+    }
+    .question input[type="radio"] {
+      margin-right: 10px;
+    }
+    #result {
+      font-weight: bold;
+      color: #27ae60;
+      margin-top: 20px;
+      text-align: center;
+    }
+    #feedback {
+      margin-top: 10px;
+      text-align: center;
+      font-size: 1.1em;
+      color: #6a1b9a;
+    }
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background: #7e57c2;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #5e35b1;
+    }
+    img.banner {
+      display: block;
+      margin: 0 auto 20px auto;
+      width: 80%;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <img class="banner" src="https://www.cambridgeenglish.org/Images/466268-cambridge-english-young-learners-banner.jpg" alt="Cambridge English Banner" />
+  <h1>Examen Diagnóstico de Inglés (5º y 6º Primaria)</h1>
+  <form id="quizForm">
+    <!-- Preguntas (resumidas para brevedad) -->
+    <div class="question">
+      <h3>1. What country is Tokyo in?</h3>
+      <label><input type="radio" name="q1" value="0" /> Germany</label><br />
+      <label><input type="radio" name="q1" value="1" /> Japan</label><br />
+      <label><input type="radio" name="q1" value="0" /> Brazil</label>
+    </div>
+    <!-- Aquí deberías copiar las preguntas del 2 al 30 como ya se han definido -->
+    <!-- Puedes usar el código de las preguntas que ya tienes -->
+    <!-- Este es un ejemplo simplificado para mostrar estructura completa -->
+
+    <!-- Botón de envío y retroalimentación -->
+    <button type="button" onclick="checkAnswers()">Enviar respuestas</button>
+    <div id="result"></div>
+    <div id="feedback"></div>
+  </form>
+
+  <script>
+    function checkAnswers() {
+      const form = document.getElementById('quizForm');
+      const data = new FormData(form);
+      let score = 0;
+      for (let entry of data.values()) {
+        score += parseInt(entry);
+      }
+      const total = 30;
+      const resultDiv = document.getElementById('result');
+      const feedbackDiv = document.getElementById('feedback');
+      resultDiv.innerText = `Obtuviste ${score} de ${total} respuestas correctas.`;
+
+      let feedback = '';
+      if (score >= 27) {
+        feedback = '¡Excelente! Estás muy preparado para el nivel avanzado.';
+      } else if (score >= 20) {
+        feedback = '¡Muy bien! Aún puedes mejorar algunos temas.';
+      } else if (score >= 10) {
+        feedback = 'Necesitas repasar. ¡Sigue practicando!';
+      } else {
+        feedback = 'Te recomendamos empezar desde un nivel más básico.';
+      }
+      feedbackDiv.innerText = feedback;
+    }
+  </script>
+</body>
+</html>
